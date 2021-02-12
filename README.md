@@ -37,12 +37,15 @@ After copy, add path properties below inside `tsconfig.json` and install the `br
         ]
     }
 
-    npm install --save ../_shared/dist/bryntum-angular-shared
+    npm install --save _shared/dist/bryntum-angular-shared
 
 Lastly, access again `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` and copy the `build` folder. And paste inside your project on `_shared` / `dist` / `scheduler-4.0.8-trial`. Now, install the dependency.
 
 
-    npm install --save ../_shared/dist/scheduler-4.0.8-trial\build\
-    
+    npm install --save _shared/dist/scheduler-4.0.8-trial\build\
+
+### Create a component
+
+For more 
 
 
