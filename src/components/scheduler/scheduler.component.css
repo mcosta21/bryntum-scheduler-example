@@ -1,0 +1,47 @@
+@import "bryntum-scheduler/scheduler.material.css";
+
+header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header div bry-lang-select {
+    margin-right: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    background-color: gray;
+    border-radius: 100%;
+}
+
+#spinner span{
+    width: inherit;
+    height: inherit;
+    background-color: red;
+    border-radius: inherit;
+}

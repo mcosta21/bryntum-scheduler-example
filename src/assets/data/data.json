@@ -1,0 +1,42 @@
+{
+  "success"   : true,
+  "resources" : {
+    "rows": [
+      {"id": "a", "name": "Arcady", "role": "Developer"},
+      {"id": "b", "name": "Dave", "role": "Sales"}
+    ]
+  },
+  "events"    : {
+    "rows": [
+      {
+        "id"        : 1,
+        "resourceId": "a",
+        "name"      : "Meeting #1",
+        "desc"      : "Discuss new features",
+        "startDate" : "2021-01-01 00:00",
+        "endDate"   : "2021-01-14 23:59",
+        "eventType" : "Meeting",
+        "eventColor": "blue",
+        "iconCls"   : "b-fa b-fa-calendar"
+      },
+      {
+        "id"        : 2,
+        "resourceId": "b",
+        "name"      : "Meeting #2",
+        "desc"      : "Strategy meeting",
+        "startDate" : "2021-01-01 00:00",
+        "endDate"   : "2021-01-14 23:59",
+        "eventType" : "Meeting",
+        "eventColor": "blue",
+        "iconCls"   : "b-fa b-fa-calendar"
+      }
+    ]
+  },
+  "timeRanges": {
+    "rows": [
+      {
+        "cls"      : "striped"
+      }
+    ]
+  }
+}

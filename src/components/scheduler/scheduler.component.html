@@ -1,0 +1,38 @@
+<header>
+    <h1><a id="title" href="">{{ translate("demoTitle") }}</a></h1>
+    <div>
+        <bry-lang-select [value]= "currentLanguage" (change)="changeLanguage($event)"></bry-lang-select>
+        <bry-fullscreen></bry-fullscreen>
+    </div>
+    <app-worker-resource [resource]="resource"></app-worker-resource>
+</header>
+<main>
+
+    <bry-scheduler
+        #scheduler
+        [rowHeight]         = "schedulerConfig.rowHeight"
+        [autoHeight]        = "schedulerConfig.autoHeight"
+        [viewPreset]        = "schedulerConfig.viewPreset"
+        [minHeight]         = "schedulerConfig.minHeight"
+        [resources]         = "schedulerConfig.resources"
+        [events]            = "schedulerConfig.events"
+        [startDate]         = "schedulerConfig.startDate"
+        [endDate]           = "schedulerConfig.endDate"
+        [columns]           = "schedulerConfig.columns"
+        [eventColor]        = "schedulerConfig.eventColor"
+        [eventStyle]        = "schedulerConfig.eventStyle"
+        [eventRenderer]     = "schedulerConfig.eventRenderer"
+        [eventMenuFeature]  = "schedulerConfig.features.eventMenu"
+        [eventFilterFeature]= "schedulerConfig.features.eventFilter"
+        [headerZoomFeature] = "schedulerConfig.features.headerZoom"
+        [scheduleMenuFeature] = "schedulerConfig.features.scheduleMenu"
+        [createEventOnDblClick] = "schedulerConfig.createEventOnDblClick"
+        [eventEditFeature] = "schedulerConfig.features.eventEdit"
+        [eventDragSelectFeature] = "schedulerConfig.features.eventDragSelect"
+        [eventDragCreateFeature] = "schedulerConfig.features.eventDragCreate"
+        [timeAxisHeaderMenuFeature] = "schedulerConfig.features.timeAxisHeaderMenu"
+        [zoomOnTimeAxisDoubleClick] = "schedulerConfig.zoomOnTimeAxisDoubleClick"
+        (onSchedulerEvents) = "onSchedulerEvents($event)"
+    >
+    </bry-scheduler>
+</main>
