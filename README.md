@@ -12,19 +12,23 @@ After access the website and request the free trial download. You'll get a zip f
 Following the [API documentation](https://www.bryntum.com/docs/scheduler/) and some steps of [Angular Integration](https://www.bryntum.com/docs/scheduler/#guides/integration/angular.md) topic, create a simple project running commands below, or use a already existing.
 
 ´´´bash
+
      ng new bryntum-scheduler-example
      npm install
+
 ´´´
 
 After that, access `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` \ `examples` \ `angular` \ `_shared` and install the dependencies and build the project. For doing the build, you'll need install `ng-packagr` like development dependency.
 
 ´´´bash
+
     // Install dependencies
     npm install
     npm install -D ng-packagr
     
     // Build project
     npm run build
+
 ´´´
 
 As a result, the `bryntum-angular-shared` projet will be created inside `dist` folder. Then, in your own project, create a `_shared` folder on root, and copy entire `dist`.
@@ -32,6 +36,7 @@ As a result, the `bryntum-angular-shared` projet will be created inside `dist` f
 After copy, add path properties below inside `tsconfig.json` and install the `brymtum-angular-shared` that we just copied.
 
 ´´´json
+
     ...
     "paths": {
         "bryntum-angular-shared":[
@@ -41,15 +46,20 @@ After copy, add path properties below inside `tsconfig.json` and install the `br
           "node_modules/@angular/*"
         ]
     }
+
 ´´´
 
 ´´´bash
+
     npm install --save ../_shared/dist/bryntum-angular-shared
+
 ´´´
 
 Lastly, access again `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` and copy the `build` folder. And paste inside your project on `_shared` / `dist` / `scheduler-4.0.8-trial`. Now, install the dependency.
 
 ´´´bash
+
     npm install --save ../_shared/dist/scheduler-4.0.8-trial\build\
+    
 ´´´
 
