@@ -41,9 +41,8 @@ After copy, add path properties below inside `tsconfig.json` and install the `br
 
 Lastly, access again `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` and copy the `build` folder. And paste inside your project on `_shared` / `dist` / `scheduler-4.0.8-trial`. Now, install the dependency.
 
-´´´
 
     npm install --save ../_shared/dist/scheduler-4.0.8-trial\build\
     
-´´´
+
 
