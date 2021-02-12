@@ -1,27 +1,55 @@
 # BryntumSchedulerExample
 
+This project is a example to use trial version of [Bryntum Scheduler](https://www.bryntum.com/products/scheduler/) using Angular v2.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
-## Development server
+## Starting from zero
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After access the website and request the free trial download. You'll get a zip file called `bryntum-scheduler-trial`. Just unzip and see more on `scheduler-x.x.x-trial` folder. 
 
-## Code scaffolding
+Following the [API documentation](https://www.bryntum.com/docs/scheduler/) and some steps of [Angular Integration](https://www.bryntum.com/docs/scheduler/#guides/integration/angular.md) topic, create a simple project running commands below, or use a already existing.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+´´´bash
+     ng new bryntum-scheduler-example
+     npm install
+´´´
 
-## Build
+After that, access `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` \ `examples` \ `angular` \ `_shared` and install the dependencies and build the project. For doing the build, you'll need install `ng-packagr` like development dependency.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+´´´bash
+    // Install dependencies
+    npm install
+    npm install -D ng-packagr
+    
+    // Build project
+    npm run build
+´´´
 
-## Running unit tests
+As a result, the `bryntum-angular-shared` projet will be created inside `dist` folder. Then, in your own project, create a `_shared` folder on root, and copy entire `dist`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+After copy, add path properties below inside `tsconfig.json` and install the `brymtum-angular-shared` that we just copied.
 
-## Running end-to-end tests
+´´´json
+    ...
+    "paths": {
+        "bryntum-angular-shared":[
+          "../_shared/dist/bryntum-angular-shared"
+        ],
+        "@angular/*": [
+          "node_modules/@angular/*"
+        ]
+    }
+´´´
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+´´´bash
+    npm install --save ../_shared/dist/bryntum-angular-shared
+´´´
 
-## Further help
+Lastly, access again `bryntum-scheduler-trial` \ `scheduler-4.0.8-trial` and copy the `build` folder. And paste inside your project on `_shared` / `dist` / `scheduler-4.0.8-trial`. Now, install the dependency.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+´´´bash
+    npm install --save ../_shared/dist/scheduler-4.0.8-trial\build\
+´´´
+
