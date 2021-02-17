@@ -106,10 +106,15 @@ const schedulerConfig = {
             // Disable context menu on resources (To disable option Delete record)
             enableCellContextMenu: false,
             renderer({record}: any) {
-                const { id, name, charge } = record.originalData;
-                const resource = new Resource(id, name, charge);
+                const { id, name, charge, photo } = record.originalData;
+                //const resource = new Resource(...)
                 // Use registered Custom Element tag name and pass it attributes
-                return `<app-worker-resource [resource]="resource"></app-worker-resource>`;
+                return `<app-worker-resource
+                            id="${id}" 
+                            name="${name}" 
+                            charge="${charge}" 
+                            photo="${photo}">
+                        </app-worker-resource>`;
               }
             
         }

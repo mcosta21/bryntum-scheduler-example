@@ -7,8 +7,11 @@ import { Component, Input, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['worker-resource.component.css']
 })
 export class WorkerResourceComponent implements OnInit {
-  @Input()
-  public resource: Resource;
+  //@Input() public resource: Resource;
+  @Input() public id: string;
+  @Input() public name: string;
+  @Input() public charge: string;
+  @Input() public photo: string;
 
   constructor() {
   }

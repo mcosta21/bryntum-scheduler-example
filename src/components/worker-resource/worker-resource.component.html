@@ -1,11 +1,33 @@
-<div class="resource">
-    <div class="worker">
-        <div>
-            <h4>eee {{ resource.name }}</h4>
-            <p>{{ resource.charge }}</p>
+<div *ngIf="id != 'undefined'; then worker else btnNewWorker"></div>
+
+<ng-template #worker>
+    <div class="resource">
+        <div class="worker">
+            <div *ngIf="photo != 'undefined'; then hasPhoto else noPhoto"></div>
+            <ng-template #hasPhoto>
+                <img src={{photo}}/>
+            </ng-template>
+
+            <ng-template #noPhoto>
+                <span>{{ name.substring(0, 1) }}</span>
+            </ng-template>
+        
+            <div>
+                <h4>{{ name }}</h4>
+                <p>{{ charge }}</p>
+            </div>
         </div>
+        <div class="options">
+        </div>
+    
     </div>
-    <div class="options">
-        {{ resource.id }}
-    </div>
-</div>
+</ng-template>
+
+<ng-template #btnNewWorker>
+    <button 
+        class="btn-new-resource" 
+        type="button" 
+        onclick="alert('hello')">
+        CLIQUE AQUI PARA SELECIONAR UM TRABALHADOR
+    </button>
+</ng-template>

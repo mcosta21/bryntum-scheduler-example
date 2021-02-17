@@ -18,15 +18,11 @@ export class SchedulerComponent {
   schedulerConfig: any = schedulerConfig;
   currentLanguage: string = 'pt';
   translate: any;
-  @Input()
-  resource: Resource;
 
   @ViewChild(BryntumScheduler, { static : false }) scheduler: BryntumScheduler;
 
   constructor(@Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
     this.translate = i18NextService.t;
-
-    this.resource = new Resource('1', 'Marcio', 'Teste')
   }
 
   /**
