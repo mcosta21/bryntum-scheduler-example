@@ -1,5 +1,11 @@
-import { Resource } from './../../models/Resource';
-import { Component, Inject, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
+
+import { 
+  Component, 
+  Inject, 
+  ViewChild, 
+  HostListener,
+  ElementRef,
+  Renderer2 } from '@angular/core';
 
 import { SchedulerComponent as BryntumScheduler } from 'bryntum-angular-shared';
 import schedulerConfig from './schedulerConfig';
@@ -8,6 +14,7 @@ import { ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
 
 // Bryntum umd lite bundle comes without polyfills to support Angular's zone.js
 import { LocaleManager } from 'bryntum-scheduler/scheduler.lite.umd.js';
+import { Resource } from 'src/models/Resource';
 
 @Component({
   selector: 'app-scheduler',
@@ -21,7 +28,10 @@ export class SchedulerComponent {
 
   @ViewChild(BryntumScheduler, { static : false }) scheduler: BryntumScheduler;
 
-  constructor(@Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
+  constructor(
+        private el: ElementRef, 
+        @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService
+        ) {
     this.translate = i18NextService.t;
   }
 
@@ -41,8 +51,15 @@ export class SchedulerComponent {
    */
   ngAfterViewInit(): void {
     this.applySchedulerLocale(this.i18NextService.language);
+
+    /*
+    this.el.nativeElement.querySelectorAll('app-worker-resource').forEach((x:any) => 
+      x.addEventListener('cardClicked', (event:CustomEvent) => { 
+          console.log(event)
+          alert('event: ' + event.detail); 
+      }));
+      */
   }
-  
 
   /**
    * Changes the language of the application
@@ -115,5 +132,4 @@ export class SchedulerComponent {
       }
   }
   
-
 }

@@ -115,7 +115,7 @@ const schedulerConfig = {
                             charge="${charge}" 
                             photo="${photo}">
                         </app-worker-resource>`;
-              }
+            }
             
         }
     ],
