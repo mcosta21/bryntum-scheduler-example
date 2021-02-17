@@ -1,4 +1,5 @@
-import { Component, Input, Output, OnInit, ElementRef, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-worker-resource',
@@ -10,31 +11,19 @@ export class WorkerResourceComponent implements OnInit {
   @Input() public name: string;
   @Input() public charge: string;
   @Input() public photo: string;
-  @Output() public cardClicked: EventEmitter<string> = new EventEmitter<string>();
-  @Output() public addResource: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private messenger: MessageService) {
   }
 
   ngOnInit(): void {
   }
 
-  @HostListener('click') onClick() { 
-    this.elementRef.nativeElement
-      .addEventListener('cardClicked', (event:CustomEvent) => { 
-        console.log(event)
-        alert('event: ' + event.detail); 
-    });
+  public onCardClicked() {
+    this.messenger.broadcast('menuClicked', this.name);
   }
 
-  public onCardClicked(){
-    console.log('card-clicked')
-    this.cardClicked.emit(this.name);
-  }
-
-  public onAddResource(){
-    console.log('add-resource')
-    this.addResource.emit('add-resource')
+  public onAddResource() {
+    this.messenger.broadcast('resourceAdded', 'ahoy!');
   }
 
 }

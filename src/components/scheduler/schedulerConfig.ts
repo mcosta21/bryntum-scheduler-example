@@ -5,17 +5,17 @@ import { Event } from '../../models/Event';
  * Scheduler config file
  */
 
- interface WorkerResource {
+interface WorkerResource {
     id: string;
     name: string;
     charge: string;
     photo?: string;
- }
+}
 
- function generateResourceData(worker : WorkerResource){
-     const { id, name, charge, photo } = worker;
-     const initials = photo === undefined ? name.substring(0, 1) : '';
-     return `
+function generateResourceData(worker: WorkerResource) {
+    const { id, name, charge, photo } = worker;
+    const initials = photo === undefined ? name.substring(0, 1) : '';
+    return `
             <div class="resource">
                 <div class="worker">
                     ${photo !== undefined ? `<img src="${photo}"/>` : `<span>${initials}</span>`}
@@ -36,7 +36,7 @@ function generateNewResource() {
     return `<button class="btn-new-resource" type="button" onclick="alert('hello')">CLIQUE AQUI PARA SELECIONAR UM TRABALHADOR</button>`
 }
 
-function generateEvent(name : string, description: string){
+function generateEvent(name: string, description: string) {
     return `
         <div class="event">
             <p>${description}</p>
@@ -55,16 +55,16 @@ const e1 = new Event(1, 'r1', new Date(2021, 0, 1, 10), new Date(2021, 0, 5, 12)
 const e2 = new Event(2, 'r2', new Date(2021, 0, 5, 10), new Date(2021, 0, 10, 12), 'Iteração 2', 'Janeiro 01, 2021  -  Janeiro 05, 2021', 'b-fa b-fa-mouse-pointer', 'Meeting', 'green');
 const e3 = new Event(3, 'undefined', new Date(2021, 0, 1, 10), new Date(2021, 0, 10, 12), 'Iteração 3', 'Janeiro 01, 2021  -  Janeiro 05, 2021', 'b-fa b-fa-mouse-pointer', 'Meeting');
 
-const events = [ e1, e2, e3 ];
+const events = [e1, e2, e3];
 
-  
+
 const schedulerConfig = {
     rowHeight: 60,
 
     // Justify height of container timeline
     autoHeight: true,
 
-    // Resources equals Workers
+    // Resources equals Members
     resources: resources,
 
     // Events equals Embarks
@@ -95,17 +95,17 @@ const schedulerConfig = {
     },
 
     // Columns to resources
-    columns : [
-        { 
-            type: 'resourceInfo', 
-            text: 'NAME', 
-            field: 'name', 
+    columns: [
+        {
+            type: 'resourceInfo',
+            text: 'NAME',
+            field: 'name',
             editor: false,
             width: 300,
-            htmlEncode : false, 
+            htmlEncode: false,
             // Disable context menu on resources (To disable option Delete record)
             enableCellContextMenu: false,
-            renderer({record}: any) {
+            renderer({ record }: any) {
                 const { id, name, charge, photo } = record.originalData;
                 //const resource = new Resource(...)
                 // Use registered Custom Element tag name and pass it attributes
@@ -116,7 +116,7 @@ const schedulerConfig = {
                             photo="${photo}">
                         </app-worker-resource>`;
             }
-            
+
         }
     ],
 
@@ -150,20 +150,20 @@ const schedulerConfig = {
                     text: 'Extra',
                     icon: 'b-fa b-fa-fw b-fa-flag',
                     onItem() {
-                        
+
                     }
                 }
             }
         },
 
         // Disable editing with double click on timeline
-        eventEdit : false,
+        eventEdit: false,
 
         // Disable selection group events to edite on timeline
-        eventDragSelect      : false,
+        eventDragSelect: false,
 
         // Disable creation event with drag on timeline
-        eventDragCreate      : false,
+        eventDragCreate: false,
 
         // Context menu of timeline
         eventMenu: {
@@ -171,12 +171,12 @@ const schedulerConfig = {
             items: {
                 editEvent: false,
                 deleteEvent: false,
-                associate : {
+                associate: {
                     text: 'Associar',
                     icon: 'b-fa b-fa-fw b-fa-arrow-left',
                     cls: 'b-separator',
                     weight: 500,
-                    onItem({ eventRecord }:any) {
+                    onItem({ eventRecord }: any) {
                         eventRecord.name = 'Associado'
                     }
                 },
@@ -184,13 +184,13 @@ const schedulerConfig = {
                     text: 'Desassociar',
                     icon: 'b-fa b-fa-fw b-fa-arrow-left',
                     weight: 500,
-                    onItem({ eventRecord }:any) {
+                    onItem({ eventRecord }: any) {
                         eventRecord.name = 'Desassociado'
                     }
                 }
             },
             // Process items before menu is shown
-            processItems({eventRecord, items}:any) {
+            processItems({ eventRecord, items }: any) {
                 // Show or unshow item menu for a specific resource
                 if (eventRecord.data.resourceId == 'undefined') {
                     items.disassociate = false;
@@ -204,7 +204,7 @@ const schedulerConfig = {
                 return true;
             },
 
-           
+
         }
     },
 
@@ -215,14 +215,14 @@ const schedulerConfig = {
     },
 
     // Add a custom content inside event on timeline
-    eventRenderer: (props:any) => {
+    eventRenderer: (props: any) => {
         //console.log(props)
         const { name, description } = props.eventRecord;
         return generateEvent(name, description);
     },
 
     // WIP
-    useInitialAnimation : 'slide-from-left'
+    useInitialAnimation: 'slide-from-left'
 
 };
 
